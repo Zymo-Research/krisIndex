@@ -6,9 +6,32 @@ import typing
 import dataclasses
 import random
 import mpire
-import json
 import os
 
+"""
+    A library for calculating the kris index of a given sequence.  The kris index is a measure of compressibility for
+    a given sequence.
+    
+    Parameters
+    ----------
+    SHOW_PROGRESS : bool
+        Whether or not to show a progress bar during parallel processing.
+    VERIFY_ALPHABET : bool
+        Whether or not to verify that the alphabet of a supplied sequence is valid relative to the expected set of 
+        characters.
+    HARD_ALPHABET_VERIFICATION : bool
+        Whether or not to raise an error if the alphabet verification of a sequence fails.
+    CASE_SENSITIVE_ALPHABET : bool
+        Whether or not to treat the incoming sequences as having case sensitivity.  If false, the sequence will be
+        converted to upper case.
+
+    Notes
+    -----
+        You will most likely want to interact with this by first creating a `KrisScoreCalculator` object.
+        Following that, you can use the `calculateKrisIndex` method to calculate the kris index of a given sequence.
+        For parallel processing, use `calculateKrisIndexParallel` instead to speed up the calculation on a list of
+        sequences.
+    """
 
 SHOW_PROGRESS = False
 VERIFY_ALPHABET = False
@@ -533,6 +556,15 @@ class KrisScoreCalculator:
         This is more efficient for calculating a single kris index or a small number of them through iteration.
         Use `calculateKrisIndexParallel` if you have a large number of sequences.
         """
+        if not CASE_SENSITIVE_ALPHABET:
+            sequence = sequence.upper()
+        if VERIFY_ALPHABET:
+            for character in sequence:
+                if character not in self.alphabet:
+                    if HARD_ALPHABET_VERIFICATION:
+                        raise ValueError("Sequence contains character not in alphabet: %s" % character)
+                    else:
+                        return -1.0
         kmerStatistics = self.alphabet[len(sequence)]
         return calculateKrisIndex(sequence, kmerStatistics)
 
