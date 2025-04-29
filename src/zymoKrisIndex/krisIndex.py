@@ -479,7 +479,7 @@ class Alphabet(BaseModel):
         return cls.model_validate(pydantic_core.from_json(jsonStr))
 
 
-def readDNA1kFile() -> str:
+def read1kFile(biochars:str) -> str:
     """
     Reads the contents of the dna1000.json file distributed with this library.
 
@@ -489,15 +489,17 @@ def readDNA1kFile() -> str:
         The contents of the dna1000.json file.
     """
     folder = os.path.dirname(os.path.abspath(__file__))
-    file = os.path.join(folder, "dna1000.json")
+    file = os.path.join(folder, "%s1000.json" % biochars)
     return open(file).read()
 
 
-_DNA1000ALPHABET = Alphabet.load(readDNA1kFile())
+DNA1000ALPHABET = Alphabet.load(read1kFile("dna"))
+RNA1000ALPHABET = Alphabet.load(read1kFile("rna"))
+AMINO1000ALPHABET = Alphabet.load(read1kFile("amino"))
 
 
 class KrisScoreCalculator:
-    def __init__(self, characterSet: [Alphabet, CharacterSet, typing.Iterable[str]]=_DNA1000ALPHABET):
+    def __init__(self, characterSet: [Alphabet, CharacterSet, typing.Iterable[str]]=DNA1000ALPHABET):
         """
         Creates a KrisScoreCalculator object.
 
@@ -595,8 +597,6 @@ class KrisScoreCalculator:
             if SHOW_PROGRESS:
                 print("Calculating kris index for %s sequences" % len(sequences))
             return pool.map(self.calculateKrisIndex, sequences, progress_bar=SHOW_PROGRESS)
-
-
 
 
 if __name__ == "__main__":

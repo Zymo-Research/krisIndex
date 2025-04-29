@@ -1,1 +1,1 @@
-from . import krisIndexCalculator
+from . import zymoKrisIndex
