@@ -42,7 +42,7 @@ proteinKris = zymoKrisIndex.KrisIndexCalculator(zymoKrisIndex.AMINO1000ALPHABET)
 
 ### Prerequisites
 
-This application requires Python 3.10 or later.  It is also dependent on the Pydantic, b2, and mpire packages.
+This application requires Python 3.10 or later.  It is also dependent on the Pydantic, bz2, and mpire packages.
 
 ### Installation
 
@@ -84,8 +84,24 @@ This license restricts the usage of this application for non-open sourced system
 We would like to thank the following, without whom this would not have happened:
 * The Python Foundation
 * The staff at Zymo Research
-* The microbiomics community for making us aware of this need
+* The IMMSA bioinformatics interest group who suggested making this a full project
 * Our customers
+
+---------------------------------------------------------------------------------------------------------------------
+## Microbial Dark Matter Symposium
+If you are reading this, you are also probably interested in pushing the limits of microbiome research
+and being able to study what we know is there, but cannot yet see. If so, the Microbial Dark Matter Symposium
+is for you!
+
+This symposium will emerging technologies, case studies, and practical applications in:
+
+- Microbial Dark matter in Metagenomics to Explore Microbial Frontiers
+- Exploring Microbial Dark Matter in Extreme and Low Biomass Environments
+- Understanding Microbial Communities in the Built Environment
+- Bioinformatics Tools for Large-Scale Exploration of Hidden Microbial Life
+- Novel Methods for Cultivating ‘Unculturable’ Microbes
+
+### [Register Here](https://www.microbial-dark-matter-symposium.com/)
 
 ---------------------------------------------------------------------------------------------------------------------
 
