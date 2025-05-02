@@ -498,7 +498,7 @@ RNA1000ALPHABET = Alphabet.load(read1kFile("rna"))
 AMINO1000ALPHABET = Alphabet.load(read1kFile("amino"))
 
 
-class KrisScoreCalculator:
+class KrisIndexCalculator:
     def __init__(self, characterSet: [Alphabet, CharacterSet, typing.Iterable[str]]=DNA1000ALPHABET):
         """
         Creates a KrisScoreCalculator object.
@@ -601,7 +601,7 @@ class KrisScoreCalculator:
 
 if __name__ == "__main__":
     SHOW_PROGRESS = True
-    calc = KrisScoreCalculator()
+    calc = KrisIndexCalculator()
     for i in range(3):
         calc.addKmerStatistics(i + 1)
         print("Got %s for length %s" % (calc.alphabet[i + 1], i + 1))
