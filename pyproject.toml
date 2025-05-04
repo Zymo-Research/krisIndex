@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "zymoKrisIndex"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Michael Weinstein", email="mweinstein@zymoresearch.com" },
 ]
@@ -15,6 +15,10 @@ requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+]
+dependencies = [
+    "pydantic >= 2.0",
+    "mpire >= 2.0",
 ]
 
 [project.urls]
